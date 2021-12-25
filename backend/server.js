@@ -52,4 +52,14 @@ server.put("/tasks/:id",(req,res)=>{
     })
 })
 
+server.get("/filter",(req,res)=>{
+    console.log(req.query)
+    Todo.find({isCompleted:req.query.isCompleted},(err,data)=>{
+        if(err){console.log("ERROR: ",err)
+    }else{
+      res.json(data)
+    }
+    })
+})
+
 server.listen(5000,()=>{console.log("Server is On...")})
