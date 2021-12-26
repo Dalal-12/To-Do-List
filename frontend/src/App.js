@@ -35,8 +35,18 @@ const deleteTodo=(id)=>{
 .catch((err)=>{console.log("ERROR: ",err)})
 }
 
+
+const toggleTodo=(id,newStatus)=>{
+  axios
+  .put(`http://localhost:5000/tasks/${id}/${newStatus}`)
+  .then((response)=>{console.log("DATA: ",response.data)
+   getData()
+})
+  .catch((err)=>{console.log("ERROR: ",err)})
+}
+
 const mapOverTasks=tasks.map((tasksObj,i)=>{
-  return <Todo key={i} tasks={tasksObj} deleteTodo={deleteTodo} />
+  return <Todo key={i} tasks={tasksObj} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
 })
   return (
     <div className="App">
