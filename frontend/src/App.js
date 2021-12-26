@@ -45,15 +45,35 @@ const toggleTodo=(id,newStatus)=>{
   .catch((err)=>{console.log("ERROR: ",err)})
 }
 
+const deleteTask=()=>{
+  axios
+  .delete("http://localhost:5000/tasks")
+  .then((response)=>{console.log("DATA: ",response.data)
+   getData()
+})
+.catch((err)=>{console.log("ERROR: ",err)})
+}
+
+const filterData=(status)=>{
+  axios
+  .get(`http://localhost:5000/filter?isCompleted=${status}`)
+  .then((response)=>{console.log("DATA: ",response.data)
+  setTasks(response.data)
+  })
+  .catch((err)=>{console.log("ERROR: ",err)})
+}
+
 const mapOverTasks=tasks.map((tasksObj,i)=>{
-  return <Todo key={i} tasks={tasksObj} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
+  return <Todo key={tasksObj._id} tasks={tasksObj} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
 })
   return (
     <div className="App">
       <p> App </p>
       <Add createFunc={postNewTodo} />
-      <button onClick={getData}> Get Tasks
-      </button> 
+      <button onClick={getData}> Get Tasks </button>
+      <button onClick={deleteTask}>Delete Completed Tasks </button>
+      <button onClick={()=>{filterData(true)}}> Get All Done Tasks </button>
+      <button onClick={()=>{filterData(false)}}> Get Pending Tasks </button>
       {mapOverTasks}
    </div>
   );
