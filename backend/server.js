@@ -3,7 +3,11 @@ const express=require('express')
 const server=express()
 const db=require('./db')
 const Todo=require('./models/todo')
+const cors=require('cors')
+
+
 server.use(express.json())
+server.use(cors())
 console.log(Todo)
 
 
