@@ -99,8 +99,11 @@ server.put("/tasks/:id/:isCompleted",(req,res)=>{
 
 server.post("/users/register",(req,res)=>{
     User.create(req.body,(err,newUser)=>{
-    if(err){console.log("ERROR: ",err)}
-    else{res.status(201).json("created new user successfully")}
+    if(err){
+        //console.log("ERROR: ",err)}
+         res.status(400).json({message:"This email already taken"})
+    }
+    else{res.status(201).json({message:"created new user successfully"})}
     })
     })
 

@@ -5,7 +5,8 @@
 .Todo{
   border: 3px blue solid;
 }
-
-
 .Add{border: 2px green solid;}
- .Todo span{margin: 0 10 0 10 px;}
+
+.Todo span{margin: 0 10 0 10 px;}
+
+.Register{border: 3px purple solid;}
