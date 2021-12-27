@@ -5,6 +5,7 @@ import Todo from './components/Todo';
 import Add from './components/Add'
 import Register from './components/Register'
 import Login from './components/Login';
+import {Routes,Route,Link} from 'react-router-dom'
 
 export default function App() {
   const [tasks,setTasks]=useState([])
@@ -71,15 +72,32 @@ const mapOverTasks=tasks.map((tasksObj,i)=>{
   return (
     <div className="App">
       <p> App </p>
-      <Add createFunc={postNewTodo} />
-      <button onClick={getData}> Get Tasks </button>
-      <button onClick={deleteTask}>Delete Completed Tasks </button>
-      <button onClick={()=>{filterData(true)}}> Get All Done Tasks </button>
-      <button onClick={()=>{filterData(false)}}> Get Pending Tasks </button>
+      <nav> 
+        <Link to='/home'>Home</Link> {'   |   '}
+        <Link to='/login'>Login</Link>{'   |   '}
+        <Link to='/register'>Register</Link>
+      </nav>
+      <br/>
+      <Routes>
+        <Route  path="/home"   element={
+          <div className="Home">
+         
+          <button onClick={getData}> Get Tasks </button>
+          <button onClick={deleteTask}>Delete Completed Tasks </button>
+          <button onClick={()=>{filterData(true)}}> Get All Done Tasks </button>
+          <button onClick={()=>{filterData(false)}}> Get Pending Tasks </button>
+    
+          
+          <Add createFunc={postNewTodo} />
+          {mapOverTasks}
+          </div>
+        }  />
 
-      <Register />
-      <Login />
-      {mapOverTasks}
+        <Route  path="/register"   element={<Register />}  />
+        <Route  path="/login"   element={ <Login />}  />
+      </Routes>
+
+
    </div>
   );
 }
