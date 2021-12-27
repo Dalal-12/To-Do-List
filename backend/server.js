@@ -4,6 +4,7 @@ const server=express()
 const db=require('./db')
 const Todo=require('./models/todo')
 const cors=require('cors')
+const User=require('./models/user')
 
 
 server.use(express.json())
@@ -95,5 +96,29 @@ server.put("/tasks/:id/:isCompleted",(req,res)=>{
     }
     })
 })
+
+server.post("/users/register",(req,res)=>{
+    User.create(req.body,(err,newUser)=>{
+    if(err){console.log("ERROR: ",err)}
+    else{res.status(201).json("created new user successfully")}
+    })
+    })
+
+    server.post("/users/login",(req,res)=>{
+        User.find({email:req.body.email},(err,data)=>{
+        if(err){console.log("ERROR: ",err)}
+        else{
+            console.log(data)
+            if(data.length===1){if(req.body.password===data[0].password)
+            {
+                res.status(200).json({message:"login successful",
+                username:data[0].username})} else{
+                    res.status(400).json("Wrong Password")}
+            }
+            else{res.status(404).json("The email is not registered")}
+            }
+           
+        })
+        })
 
 server.listen(5000,()=>{console.log("Server is On...")})
