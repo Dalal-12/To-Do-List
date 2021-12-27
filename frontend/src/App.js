@@ -9,6 +9,9 @@ import {Routes,Route,Link} from 'react-router-dom'
 
 export default function App() {
   const [tasks,setTasks]=useState([])
+  const [isLoggedIn,setIsLoggedIn]=useState(false)
+  const [username,setUsername]=useState("")
+ 
 
   useEffect(()=>{getData()},[])
   const getData=()=>{
@@ -72,6 +75,7 @@ const mapOverTasks=tasks.map((tasksObj,i)=>{
   return (
     <div className="App">
       <p> App </p>
+      <p>{username}</p>
       <nav> 
         <Link to='/home'>Home</Link> {'   |   '}
         <Link to='/login'>Login</Link>{'   |   '}
@@ -94,7 +98,8 @@ const mapOverTasks=tasks.map((tasksObj,i)=>{
         }  />
 
         <Route  path="/register"   element={<Register />}  />
-        <Route  path="/login"   element={ <Login />}  />
+        <Route  path="/login"   element={ <Login setIsLoggedIn={setIsLoggedIn}
+         setUsername={ setUsername}/>}  />
       </Routes>
 
 

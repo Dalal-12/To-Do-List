@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React,{useState} from 'react'
+import {Routes,Route,Link} from 'react-router-dom'
+
 export default function Register(){
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
@@ -30,6 +32,8 @@ export default function Register(){
                  onChange={(e)=>{setUsername(e.target.value)}} value={username} />
                 <br/>
                 <input type="submit"  value="Register" onClick={registerFunc}  />
+                <Link to='/login'>Have an Account?</Link>
+
             </form>
         </div>
     )
