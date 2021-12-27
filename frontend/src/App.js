@@ -4,6 +4,7 @@ import axios from 'axios'
 import Todo from './components/Todo';
 import Add from './components/Add'
 import Register from './components/Register'
+import Login from './components/Login';
 
 export default function App() {
   const [tasks,setTasks]=useState([])
@@ -77,6 +78,7 @@ const mapOverTasks=tasks.map((tasksObj,i)=>{
       <button onClick={()=>{filterData(false)}}> Get Pending Tasks </button>
 
       <Register />
+      <Login />
       {mapOverTasks}
    </div>
   );
