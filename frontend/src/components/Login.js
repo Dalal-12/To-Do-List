@@ -31,7 +31,7 @@ export default function Login(props){
                  onChange={(e)=>{setPassword(e.target.value)}} value={password}  />
                 <br/>
               
-                <input type="submit"  value="Login" onClick={loginFunc}  />
+                <input type="submit"  value="Login" onClick={loginFunc} class="btn btn-dark" />
                 <Link to='/register'>Don't Have an Account?</Link>
             </form>
         </div>

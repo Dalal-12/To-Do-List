@@ -81,11 +81,22 @@ const mapOverTasks=tasks.map((tasksObj,i)=>{
     <div className="App">
       <p> App </p>
       <p>{username}</p>
-      <nav> 
-        <Link to='/home'>Home</Link> {'   |   '}
-        <Link to='/login'>Login</Link>{'   |   '}
-        <Link to='/register'>Register</Link>
-      </nav>
+      
+      <ul class="nav nav-tabs">
+  <li class="nav-item">
+    
+    <Link to='/home' class="nav-link active" aria-current="page">Home</Link>
+  </li>
+  <li class="nav-item">
+  
+    <Link to='/login' class="nav-link">Login</Link>
+  </li>
+  <li class="nav-item">
+    
+    <Link to='/register' class="nav-link">Register</Link>
+  </li>
+ 
+</ul>
       <br/>
 
       <button onClick={logoutFunc}> Logout </button>

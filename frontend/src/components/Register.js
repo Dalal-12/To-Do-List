@@ -31,7 +31,7 @@ export default function Register(){
                 <input type="text" placeholder="write your username here"  
                  onChange={(e)=>{setUsername(e.target.value)}} value={username} />
                 <br/>
-                <input type="submit"  value="Register" onClick={registerFunc}  />
+                <input type="submit"  value="Register" onClick={registerFunc} class="btn btn-primary" />
                 <Link to='/login'>Have an Account?</Link>
 
             </form>
