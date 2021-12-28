@@ -69,6 +69,11 @@ const filterData=(status)=>{
   .catch((err)=>{console.log("ERROR: ",err)})
 }
 
+const logoutFunc=()=>{
+  setIsLoggedIn(false)
+  setUsername("")
+}
+
 const mapOverTasks=tasks.map((tasksObj,i)=>{
   return <Todo key={tasksObj._id} tasks={tasksObj} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
 })
@@ -82,6 +87,8 @@ const mapOverTasks=tasks.map((tasksObj,i)=>{
         <Link to='/register'>Register</Link>
       </nav>
       <br/>
+
+      <button onClick={logoutFunc}> Logout </button>
       <Routes>
         <Route  path="/home"   element={
           <div className="Home">
